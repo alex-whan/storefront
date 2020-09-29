@@ -32,6 +32,13 @@ const initialState = {
       price: '$299',
       inventory: 1,
     },
+    {
+      name: 'the coolest stapler',
+      category: 'office',
+      description: 'I believe someone still has it',
+      price: '$1',
+      inventory: 1,
+    },
   ],
   productsToDisplay: [],
 };
@@ -39,7 +46,16 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
+  // console.log('ACTION???', action);
+
   switch (type) {
+    case 'change':
+      let targetCategory = payload.name;
+      let productsToDisplay = state.products.filter(product => {
+        return product.category === targetCategory;
+      });
+      // console.log('DISPLAY PRODS', productsToDisplay);
+      return { ...state, productsToDisplay };
     default:
       return state;
   }
