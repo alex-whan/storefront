@@ -5,17 +5,20 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { changeActiveCategory } from '../../store/categories';
 
 const CurrentCategory = props => {
-  return <h2>CURRENT CATEGORY: {props.activeCategory}</h2>;
+  // console.log('CURRENT CAT:', props);
+  return <h2>CURRENT CATEGORY: {props.activeCategory.toString()}</h2>;
 };
 
 const mapStateToProps = state => {
+  // console.log('STATE??', state.categories.activeCategory);
   return {
-    activeCategory: state.products.activeCategory,
+    activeCategory: state.categories.activeCategory,
   };
 };
 
-// const mapDispatchToProps
+const mapDispatchToProps = { changeActiveCategory };
 
-export default connect(mapStateToProps)(CurrentCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentCategory);

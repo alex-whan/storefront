@@ -33,7 +33,7 @@ const initialState = {
       inventory: 1,
     },
   ],
-  activeCategory: 'kitchen',
+  productsToDisplay: [],
 };
 
 export default (state = initialState, action) => {

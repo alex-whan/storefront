@@ -1,18 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { changeActiveCategory } from '../../store/categories';
 
 //TODO: Shows a list of all categories
 // Dispatches an action when one is clicked to “activate” it
 
-function Categories() {
+const Categories = props => {
+  let categoriesToMap = props.category.categories;
+  // console.log('MAP???', categoriesToMap);
+
   return (
     <div>
       <h2>My Categories component.</h2>
-      <p>
-        This will show a list of all categories and dispatch an action when one
-        is clicked to "activate" it.
-      </p>
+      <ul>
+        {categoriesToMap.map(category => {
+          return (
+            <li
+              key={category.displayName}
+              onClick={() => props.changeActiveCategory(category)}
+            >
+              {category.displayName}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
-}
+};
 
-export default Categories;
+const mapStateToProps = state => {
+  return {
+    category: state.categories, // maybe change this
+  };
+};
+
+const mapDispatchToProps = { changeActiveCategory };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);
