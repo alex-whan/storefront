@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-case-declarations */
 // State should be a list of all products
 
 // Each product should have a category association, name, description, price, inventory count
@@ -8,6 +10,8 @@
 // i.e. PRODUCTS and CATEGORIES
 
 // Create a reducer that will filter the products list based on the active category
+
+// UNEXPECTED LEXICAL DECLARATION IN CASE BLOCK?? WHAT IS THIS ERROR?
 
 const initialState = {
   products: [
@@ -43,6 +47,13 @@ const initialState = {
   productsToDisplay: [],
 };
 
+export const reduceStock = name => {
+  return {
+    type: 'REDUCE',
+    payload: name,
+  };
+};
+
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
@@ -52,9 +63,24 @@ export default (state = initialState, action) => {
         return product.category === payload.name;
       });
       return { ...state, productsToDisplay };
+
+    case 'REDUCE':
+      console.log('PAYLOAD>>>>', payload);
+      let productToModify = state.products.map(product => {
+        if (product.name === payload.name) {
+          product.inventory--;
+          // Won't let me do it without using '--'?
+        }
+        console.log('PRODUCT???', product);
+        return product;
+      });
+
+      return {
+        ...state,
+        products: productToModify,
+      };
+
     default:
       return state;
   }
 };
-
-//TODO define action creators (functions that give us the ACTION OBJECT)

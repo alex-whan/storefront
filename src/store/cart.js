@@ -2,10 +2,10 @@ const initialState = {
   productsInCart: [],
 };
 
-export const addToCart = name => {
+export const addToCart = product => {
   return {
     type: 'ADD',
-    payload: name,
+    payload: product,
   };
 };
 

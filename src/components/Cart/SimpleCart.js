@@ -9,7 +9,7 @@ import products from '../../store/products';
 
 const SimpleCart = ({ productsInCart }) => {
   // console.log('PRODS IN CART????', props);
-  console.log(productsInCart);
+  // console.log('PRODS IN CART?', productsInCart);
   return (
     <div>
       <h2>CART: ({productsInCart.length})</h2>
