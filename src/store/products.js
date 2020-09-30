@@ -46,15 +46,11 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
-  // console.log('ACTION???', action);
-
   switch (type) {
-    case 'change':
-      let targetCategory = payload.name;
+    case 'CATEGORY':
       let productsToDisplay = state.products.filter(product => {
-        return product.category === targetCategory;
+        return product.category === payload.name;
       });
-      // console.log('DISPLAY PRODS', productsToDisplay);
       return { ...state, productsToDisplay };
     default:
       return state;

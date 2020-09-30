@@ -29,20 +29,17 @@ const initialState = {
 
 export const changeActiveCategory = name => {
   return {
-    type: 'change',
+    type: 'CATEGORY',
     payload: name,
   };
 };
 
 export default (state = initialState, action) => {
-  const { type, payload } = action;
+  let { type, payload } = action;
 
-  // Not changing properly
   switch (type) {
-    case 'change':
-      let activeCategory = payload.name;
-      console.log('ACTIVE CATEGORY: ', activeCategory);
-      return { ...state, activeCategory };
+    case 'CATEGORY':
+      return { ...state, activeCategory: payload.name };
     default:
       return state;
   }
