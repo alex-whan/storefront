@@ -6,8 +6,6 @@ import { changeActiveCategory } from '../../store/categories';
 // Dispatches an action when one is clicked to “activate” it
 
 const Categories = props => {
-  // console.log('MAP???', categoriesToMap);
-
   return (
     <div>
       <h2>CATEGORIES:</h2>
@@ -29,7 +27,7 @@ const Categories = props => {
 
 const mapStateToProps = state => {
   return {
-    categories: state.categories.categories, // maybe change this
+    categories: state.categories.categories,
   };
 };
 

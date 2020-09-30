@@ -8,12 +8,10 @@ import { connect } from 'react-redux';
 import { changeActiveCategory } from '../../store/categories';
 
 const CurrentCategory = ({ activeCategory }) => {
-  // console.log('CURRENT CAT:', props);
   return <h2>CURRENT CATEGORY: {activeCategory.toString()}</h2>;
 };
 
 const mapStateToProps = state => {
-  // console.log('STATE??', state.categories.activeCategory);
   return {
     activeCategory: state.categories.activeCategory,
   };
