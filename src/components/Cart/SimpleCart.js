@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import products from '../../store/products';
 
 // Displays a short list (title only) of products in the cart
 // This should be present at all times
@@ -12,7 +11,7 @@ const SimpleCart = ({ productsInCart }) => {
   // console.log('PRODS IN CART?', productsInCart);
   return (
     <div>
-      <h2>CART: ({productsInCart.length})</h2>
+      <h2>SimpleCart</h2>
       <ul>
         {productsInCart.map(product => {
           return <li key={product.name}>{product.name}</li>;

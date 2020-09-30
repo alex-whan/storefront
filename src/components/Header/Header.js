@@ -1,13 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // Add a “Cart” indicator to the header, like this: Cart (0)
 
-function Header() {
+const Header = ({ productsInCart }) => {
   return (
     <div>
       <h1>This is my header!</h1>
+      <h2>Cart: ({productsInCart.length})</h2>
     </div>
   );
-}
+};
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    productsInCart: state.cart.productsInCart,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

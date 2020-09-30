@@ -10,7 +10,7 @@ const Categories = props => {
 
   return (
     <div>
-      <h2>My Categories component.</h2>
+      <h2>CATEGORIES:</h2>
       <ul>
         {props.categories.map(category => {
           return (
