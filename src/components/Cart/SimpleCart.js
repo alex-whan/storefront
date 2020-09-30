@@ -14,7 +14,7 @@ const SimpleCart = ({ productsInCart }) => {
       <h2>SimpleCart</h2>
       <ul>
         {productsInCart.map(product => {
-          return <li key={product.name}>{product.name}</li>;
+          return <li key={Math.random()}>{product.name}</li>;
         })}
       </ul>
     </div>

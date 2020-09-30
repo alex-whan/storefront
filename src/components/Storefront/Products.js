@@ -14,7 +14,7 @@ const Products = props => {
       <ul>
         {props.productsToDisplay.map(product => {
           return (
-            <li key={product.name}>
+            <li key={Math.random()}>
               {product.name}: {product.inventory}
               <button onClick={() => props.addToCart(product)}>ADD</button>
             </li>

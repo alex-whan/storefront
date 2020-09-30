@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const Header = ({ productsInCart }) => {
   return (
     <div>
-      <h1>This is my header!</h1>
+      <h1>Virtual Store</h1>
       <h2>Cart: ({productsInCart.length})</h2>
     </div>
   );
