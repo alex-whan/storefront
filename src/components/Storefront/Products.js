@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../store/cart';
-import { reduceStock } from '../../store/products';
 
 //TODO: Displays a list of products associated with the selected category
 // Props is coming up UNDEFINED when clicking the ADD button
@@ -9,16 +8,15 @@ import { reduceStock } from '../../store/products';
 // productsToDisplay.map() is not a function?
 
 const Products = props => {
-  // console.log('PROPS???', props);
   return (
     <div>
       <h2>PRODUCTS:</h2>
       <ul>
         {props.productsToDisplay.map(product => {
           return (
-            <li key={product.name} onClick={() => props.addToCart(product)}>
+            <li key={product.name}>
               {product.name}: {product.inventory}
-              <button onClick={() => props.reduceStock(product)}>ADD</button>
+              <button onClick={() => props.addToCart(product)}>ADD</button>
             </li>
           );
         })}
@@ -34,6 +32,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { addToCart, reduceStock };
+const mapDispatchToProps = { addToCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

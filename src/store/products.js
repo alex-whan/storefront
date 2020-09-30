@@ -68,12 +68,12 @@ const initialState = {
   productsToDisplay: [],
 };
 
-export const reduceStock = name => {
-  return {
-    type: 'REDUCE',
-    payload: name,
-  };
-};
+// export const reduceStock = name => {
+//   return {
+//     type: 'REDUCE',
+//     payload: name,
+//   };
+// };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
@@ -85,20 +85,18 @@ export default (state = initialState, action) => {
       });
       return { ...state, productsToDisplay };
 
-    case 'REDUCE':
-      console.log('PAYLOAD>>>>', payload);
-      let productToModify = state.products.map(product => {
-        if (product.name === payload.name) {
+    case 'ADD_CART':
+      let modifiedProducts = state.products.map(product => {
+        if (product.inventory > 0 && product.name === payload.name) {
           product.inventory--;
           // Won't let me do it without using '--'?
         }
-        console.log('PRODUCT???', product);
         return product;
       });
 
       return {
         ...state,
-        products: productToModify,
+        products: modifiedProducts,
       };
 
     default:

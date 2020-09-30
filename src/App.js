@@ -11,15 +11,14 @@ import SimpleCart from './components/Cart/SimpleCart';
 function App() {
   return (
     <>
-      <Header />
-      <SimpleCart />
       <div className="App">
-        <h2>This is my App</h2>
+        <Header />
+        <SimpleCart />
+        <CurrentCategory />
+        <Categories />
+        <Products />
+        <Footer />
       </div>
-      <CurrentCategory />
-      <Categories />
-      <Products />
-      <Footer />
     </>
   );
 }

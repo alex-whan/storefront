@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
   return (
     <div>
-      <h2>This is my footer</h2>
+      <h2>&copy; 2020 Alex Whan</h2>
     </div>
   );
 }
