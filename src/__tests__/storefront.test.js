@@ -25,8 +25,8 @@ describe('Products tests', () => {
     expect(state.productsToDisplay.length).toBe(0);
     expect(state.products[0].name).toBe('egg cooker');
     expect(state.products[1].name).toBe('the baconator');
-    expect(state.products[2].name).toBe('nintendo switch');
-    expect(state.products[3].name).toBe('the coolest stapler');
+    expect(state.products[2].name).toBe('cast iron wok');
+    expect(state.products[3].name).toBe('nintendo switch');
   });
 
   it.skip('should modify displayed products', () => {
