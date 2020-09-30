@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addToCart } from '../../store/cart';
 
 //TODO: Displays a list of products associated with the selected category
 
@@ -10,7 +11,11 @@ const Products = props => {
       <h2>A list of all my cool products:</h2>
       <ul>
         {props.productsToDisplay.map(product => {
-          return <li key={product.name}>{product.name}</li>;
+          return (
+            <li key={product.name} onClick={() => props.addToCart(product)}>
+              {product.name}
+            </li>
+          );
         })}
       </ul>
     </div>
@@ -25,4 +30,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = { addToCart };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

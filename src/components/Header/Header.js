@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Add a “Cart” indicator to the header, like this: Cart (0)
+
 function Header() {
   return (
     <div>
