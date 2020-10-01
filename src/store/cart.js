@@ -1,5 +1,7 @@
 /* eslint-disable no-case-declarations */
 
+import axios from 'axios';
+
 /* eslint-disable indent */
 
 // When adding/removing/updating items in the cart, the action/reducer will need to update the server
@@ -10,16 +12,30 @@ const initialState = {
 };
 
 export const addToCart = product => {
-  return {
-    type: 'ADD_CART',
-    payload: product,
+  return async function (dispatch) {
+    // await axios.put(
+    //   `https://api-js401.herokuapp.com/api/v1/product/${product._id}`,
+    //   { ...(product.inventory - 1) }
+    // );
+
+    dispatch({
+      type: 'ADD_CART',
+      payload: product,
+    });
   };
 };
 
 export const removeFromCart = product => {
-  return {
-    type: 'REMOVE_CART',
-    payload: product,
+  return async function (dispatch) {
+    // await axios.put(
+    //   `https://api-js401.herokuapp.com/api/v1/product/${product._id}`,
+    //   { ...(product.inventory + 1) }
+    // );
+
+    dispatch({
+      type: 'REMOVE_CART',
+      payload: product,
+    });
   };
 };
 
