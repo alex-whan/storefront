@@ -1,27 +1,25 @@
-// State should contain a list of categories as well as the active category
+// Load the category and product list from a remote API on page load.
 
-// Each category should have a normalized name, display name, and a description
+// You will need to use useEffect() to dispatch a load action on the initial page load
 
-// Create an action that will trigger the reducer to change the active category
-
-// Update the active category in the reducer when this action is dispatched
+// This will need to use thunk as it will be asynchronous
 
 const initialState = {
   categories: [
     {
       name: 'kitchen',
-      displayName: 'kitchen',
-      description: 'stuff for the kitchen!',
+      displayName: 'Kitchen',
+      description: 'Stuff for the kitchen!',
     },
     {
       name: 'office',
-      displayName: 'office',
-      description: 'cool paper and stuff!',
+      displayName: 'Office',
+      description: 'Cool paper and stuff!',
     },
     {
       name: 'electronics',
-      displayName: 'electronics',
-      description: 'electronic stuff!',
+      displayName: 'Electronics',
+      description: 'Electronic stuff!',
     },
   ],
   activeCategory: 'kitchen',

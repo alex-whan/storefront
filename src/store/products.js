@@ -1,17 +1,11 @@
 /* eslint-disable indent */
 /* eslint-disable no-case-declarations */
-// State should be a list of all products
 
-// Each product should have a category association, name, description, price, inventory count
+// Load the category and product list from a remote API on page load.
 
-// Create an action that will trigger when the active category is changed
+// You will need to use useEffect() to dispatch a load action on the initial page load
 
-// HINT: Multiple reducers can respond to the same actions
-// i.e. PRODUCTS and CATEGORIES
-
-// Create a reducer that will filter the products list based on the active category
-
-// UNEXPECTED LEXICAL DECLARATION IN CASE BLOCK?? WHAT IS THIS ERROR?
+// This will need to use thunk as it will be asynchronous
 
 const initialState = {
   products: [
@@ -68,13 +62,6 @@ const initialState = {
   productsToDisplay: [],
 };
 
-// export const reduceStock = name => {
-//   return {
-//     type: 'REDUCE',
-//     payload: name,
-//   };
-// };
-
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
@@ -86,17 +73,28 @@ export default (state = initialState, action) => {
       return { ...state, productsToDisplay };
 
     case 'ADD_CART':
-      let modifiedProducts = state.products.map(product => {
+      let addedProducts = state.products.map(product => {
         if (product.inventory > 0 && product.name === payload.name) {
           product.inventory--;
           // Won't let me do it without using '--'?
         }
         return product;
       });
-
       return {
         ...state,
-        products: modifiedProducts,
+        products: addedProducts,
+      };
+
+    case 'REMOVE_CART':
+      let removedProducts = state.products.map(product => {
+        if (product.name === payload.name) {
+          product.inventory++;
+        }
+        return product;
+      });
+      return {
+        ...state,
+        products: removedProducts,
       };
 
     default:
