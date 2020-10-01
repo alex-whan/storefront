@@ -5,34 +5,36 @@
 
 // This will need to use thunk as it will be asynchronous
 
-import axios from 'axios';
-const REACT_APP_API = process.env.REACT_APP_API;
+// categories: [
+//   {
+//     name: 'food',
+//     displayName: 'Food',
+//     description: 'Stuff for the kitchen!',
+//   },
+//   {
+//     name: 'office',
+//     displayName: 'Office',
+//     description: 'Cool paper and stuff!',
+//   },
+//   {
+//     name: 'electronics',
+//     displayName: 'Electronics',
+//     description: 'Electronic stuff!',
+//   },
+// ],
 
-// const initialState = {
-//   categories: [
-//     {
-//       name: 'kitchen',
-//       displayName: 'Kitchen',
-//       description: 'Stuff for the kitchen!',
-//     },
-//     {
-//       name: 'office',
-//       displayName: 'Office',
-//       description: 'Cool paper and stuff!',
-//     },
-//     {
-//       name: 'electronics',
-//       displayName: 'Electronics',
-//       description: 'Electronic stuff!',
-//     },
-//   ],
-//   activeCategory: 'kitchen',
-// };
+import axios from 'axios';
+const url = process.env.REACT_APP_API;
 
 const initialState = {
   categories: [],
-  activeCategory: 'kitchen',
+  activeCategory: '',
 };
+
+// const initialState = {
+//   categories: [],
+//   activeCategory: 'kitchen',
+// };
 
 export const changeActiveCategory = name => {
   return {
@@ -41,13 +43,13 @@ export const changeActiveCategory = name => {
   };
 };
 
+// https://api-js401.herokuapp.com/api/v1/categories
+
 export const getCategories = () => {
   return async function (dispatch) {
     const response = await axios.get(
-      'https://api-js401.herokuapp.com/api/v1/categories'
+      `https://api-js401.herokuapp.com/api/v1/categories`
     );
-
-    console.log('RES?????', response.data.results);
 
     dispatch({
       type: 'UPDATE_CATEGORIES',
@@ -57,7 +59,7 @@ export const getCategories = () => {
 };
 
 export default (state = initialState, action) => {
-  let { type, payload } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case 'CHANGE_CATEGORY':
