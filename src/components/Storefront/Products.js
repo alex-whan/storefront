@@ -13,12 +13,14 @@ const Products = props => {
       <h2>PRODUCTS:</h2>
       <ul>
         {props.productsToDisplay.map(product => {
-          return (
-            <li key={Math.random()}>
-              {product.name}: {product.inventory}
-              <button onClick={() => props.addToCart(product)}>ADD</button>
-            </li>
-          );
+          if (product.inventory > 0) {
+            return (
+              <li key={Math.random()}>
+                {product.name}: {product.inventory}
+                <button onClick={() => props.addToCart(product)}>ADD</button>
+              </li>
+            );
+          }
         })}
       </ul>
     </div>
