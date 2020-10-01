@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { changeActiveCategory } from '../../store/categories';
+import { getCategories } from '../../store/categories';
 
 // Load the category and product list from a remote API on page load.
 
@@ -8,18 +9,22 @@ import { changeActiveCategory } from '../../store/categories';
 
 // This will need to use thunk as it will be asynchronous
 
-const Categories = props => {
+const Categories = ({ getCategories, changeActiveCategory, categories }) => {
+  useEffect(() => {
+    getCategories();
+  }, [getCategories]);
+
   return (
     <div>
       <h2>CATEGORIES:</h2>
       <ul>
-        {props.categories.map(category => {
+        {categories.map(category => {
           return (
             <li
-              key={category.displayName}
-              onClick={() => props.changeActiveCategory(category)}
+              key={category._id}
+              onClick={() => changeActiveCategory(category)}
             >
-              {category.displayName}
+              {category.name}
             </li>
           );
         })}
@@ -34,6 +39,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { changeActiveCategory };
+const mapDispatchToProps = { getCategories, changeActiveCategory };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
